@@ -1,5 +1,5 @@
-from evercraft import *
+from main import *
 
-def test_class ():
+def test_is_character ():
     p1 = Character()
-    assert Class is not None
+    assert Character is not None
