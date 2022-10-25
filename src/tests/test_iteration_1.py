@@ -61,4 +61,11 @@ def test_less_than_10_attack():
     p2.attack(p1, 3)
     assert p1.hp == 5 and p2.hp == 5
 
+def test_alive():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    p1.attack(p2, 20)
+    p1.attack(p2, 20)
+    p1.attack(p2, 20)
+    assert p2.alive is not True
 
