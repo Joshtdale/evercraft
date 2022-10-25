@@ -39,3 +39,7 @@ def test_hp():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.hp and p2.hp == 5
+
+# def test_attack():
+
+#     assert 
