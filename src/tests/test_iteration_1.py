@@ -38,8 +38,34 @@ def test_character_armor():
 def test_hp():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    assert p1.hp and p2.hp == 5
+    assert p1.hp == 5 and p2.hp == 5
 
-# def test_attack():
+def test_20_attack():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    p1.attack(p2, 20)
+    p2.attack(p1, 20)
+    assert p2.hp == 3 and p1.hp == 3
 
-#     assert 
+def test_10_or_over_attack():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    p1.attack(p2, 15)
+    p2.attack(p1, 10)
+    assert p1.hp == 4 and p2.hp == 4
+
+def test_less_than_10_attack():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    p1.attack(p2, 9)
+    p2.attack(p1, 3)
+    assert p1.hp == 5 and p2.hp == 5
+
+def test_alive():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    p1.attack(p2, 20)
+    p1.attack(p2, 20)
+    p1.attack(p2, 20)
+    assert p2.alive is not True
+
