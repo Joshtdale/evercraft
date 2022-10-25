@@ -1,0 +1,2 @@
+class character():
+    pass
