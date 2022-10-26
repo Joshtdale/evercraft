@@ -88,3 +88,8 @@ As a character I want my experience points to increase my level and combat capab
 * For each level:
     * hit points increase by 5 plus Con modifier
     * 1 is added to attack roll for every even level achieved
+
+
+Iteration 2
+
+	class base attribute * level

@@ -10,12 +10,12 @@ class Character:
         self.armor = 10
         self.hp = 5
         self.alive = True
-        self.strength = modifiers['16']
-        self.dexterity
-        self.constitution
-        self.wisdom
-        self.intelligence
-        self.charisma
+        self.strength = 10 # modifiers[str(int('14') + int('1'))]
+        self.dexterity = 10
+        self.constitution = 10
+        self.wisdom = 10
+        self.intelligence = 10
+        self.charisma = 10
 
 
     def attack(self, opponent, roll):
@@ -30,7 +30,7 @@ class Character:
 p1 = Character('Josh', 'Evil')
 p2 = Character('Dakota', 'Good')
 p1.attack(p2, 18)
-print(p2.hp)
+print (p2.strength)
 
 
 
