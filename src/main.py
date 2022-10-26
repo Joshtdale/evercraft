@@ -27,34 +27,41 @@ class Character:
         self.level = 1
         self.xp = 0
         self.alignment = alignment
-        self.armor = 10
-        self.hp = 5
         self.alive = True
         self.strength = self.modifiers['10'] # modifiers[str(int('14') + int('1'))]
         self.dexterity = self.modifiers['10']
+        self.armor = 10 + self.dexterity
         self.constitution = self.modifiers['10']
+        self.hp = 5 + self.dexterity
         self.wisdom = self.modifiers['10']
         self.intelligence = self.modifiers['10']
         self.charisma = self.modifiers['10']
-        if self.xp < 1000:
-            self.level = 1
-        elif self.xp > 1000:
-            self.level = math.ceil(self.xp/1000)
+
+        
 
     def attack(self, opponent, roll):
         if roll == 20:
             opponent.hp -= 2 + self.strength
+            self.xp = self.xp + 10
         elif roll >= opponent.armor:
             opponent.hp -= 1 + self.strength
+            self.xp = self.xp + 10
+
         if opponent.hp <= 0:
             opponent.alive = False
+        if self.xp < 1000:
+            self.level = 1
+        elif self.xp >= 1000:
+            self.level = math.ceil(self.xp/1000)
+        
+        
 
 
 
-p1 = Character('Josh', 'Evil')
-p2 = Character('Dakota', 'Good')
+# p1 = Character('Josh', 'Evil')
+# p2 = Character('Dakota', 'Good')
 
-print (p1.level)
+# print (p1.level)
 
 
 

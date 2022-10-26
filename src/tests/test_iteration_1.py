@@ -114,3 +114,64 @@ def test_xp():
     p2 = Character('Dakota', 'Good')
     assert p1.xp == 0 and p2.xp == 0
 
+def test_20attack_increase_xp ():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    p1.attack(p2, 20)
+    p2.attack(p1, 20)
+    assert p1.xp == 10 and p2.xp == 10
+
+def test_regular_attack_increase_xp ():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    p1.attack(p2, 12)
+    p2.attack(p1, 14)
+    assert p1.xp == 10 and p2.xp == 10
+
+def test_unsuccessful_attack_xp ():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    p1.attack(p2, 8)
+    p2.attack(p1, 6)
+    assert p1.xp == 0 and p2.xp == 0
+
+def test_multiple_attack_xp ():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    p1.attack(p2, 14)
+    p2.attack(p1, 12)
+    p1.attack(p2, 15)
+    p2.attack(p1, 16)
+    assert p1.xp == 20 and p2.xp == 20
+
+
+def test_dexterity_mod():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.armor is 10
+
+def test_hp_mod():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.hp is 5
+
+def test_level_up():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    for number in range(0, 101):
+        p1.attack(p2, 20)
+    assert p1.level is 2
+
+def test_multiple_level_up():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    for number in range(0, 201, 1):
+        p1.attack(p2, 20)
+    assert p1.level is 3
+
+def test_hp_level_up():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    for number in range(0, 101):
+        p1.attack(p2, 20)
+    assert p1.hp is 10
