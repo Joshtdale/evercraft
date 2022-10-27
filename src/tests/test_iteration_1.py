@@ -28,7 +28,42 @@ def test_is_alive():
 def test_is_strength():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    assert p1.level == 1 and p2.level == 1
+    assert p1.strength == 0 and p2.strength == 0
+
+def test_is_dexterity():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.dexterity == 0 and p2.dexterity== 0
+
+def test_is_armor():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.armor == 10 and p2.armor==10
+
+def test_is_constitution():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.constitution == 0 and p2.constitution == 0
+
+def test_is_wisdom():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.wisdom == 0 and p2.wisdom == 0
+
+def test_is_intelligence():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.intelligence == 0 and p2.intelligence == 0
+
+def test_is_charisma():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.charisma == 0 and p2.charisma == 0 
+
+def test_is_attackmod():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.attack_mod == 0 and p2.attack_mod==0
 
 def test_name_unique():
     p1 = Character('Josh', 'Evil')
@@ -59,33 +94,6 @@ def test_hp():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.hp == 5 and p2.hp == 5
-#---------------------------------------------------------------------
-#REGULAR CHARACTER CLASS ATTACK TESTS
-def test_20_attack():
-    p1 = Character('Josh', 'Evil')
-    p2 = Character('Dakota', 'Good')
-    a = Attack(p1, p2).action(20)
-    a2 = Attack(p2, p1).action(20)
-    assert p2.hp == 3 and p1.hp == 3
-    assert not p1.hp > 3 and not p2.hp > 3
-    assert not p1.hp < 3 and not p2.hp < 3
-
-def test_10_or_over_attack():
-    p1 = Character('Josh', 'Evil')
-    p2 = Character('Dakota', 'Good')
-    a = Attack(p1, p2).action(15)
-    a2 = Attack(p2, p1).action(10)
-    assert p1.hp == 4 and p2.hp == 4
-    assert p1.hp is not 5 and p2.hp is not 5
-    assert not p1.hp < 4 and not p2.hp < 4
-
-def test_less_than_10_attack():
-    p1 = Character('Josh', 'Evil')
-    p2 = Character('Dakota', 'Good')
-    a = Attack(p1, p2).action(9)
-    a2 = Attack(p1, p2).action(3)
-    assert p1.hp == 5 and p2.hp == 5
-    assert not p1.hp < 5 and not p2.hp < 5
 
 def test_alive():
     p1 = Character('Josh', 'Evil')
@@ -136,6 +144,49 @@ def test_xp():
     p2 = Character('Dakota', 'Good')
     assert p1.xp == 0 and p2.xp == 0
 
+# ----Character modifier test-----------------------
+
+def test_dexterity_mod():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.armor is 10
+
+def test_hp_mod():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.hp is 5
+
+#---------REGULAR CHARACTER CLASS ATTACK TESTS------------------------------------------------------------
+
+def test_20_attack():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    a = Attack(p1, p2).action(20)
+    a2 = Attack(p2, p1).action(20)
+    assert p2.hp == 3 and p1.hp == 3
+    assert not p1.hp > 3 and not p2.hp > 3
+    assert not p1.hp < 3 and not p2.hp < 3
+
+def test_10_or_over_attack():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    a = Attack(p1, p2).action(15)
+    a2 = Attack(p2, p1).action(10)
+    assert p1.hp == 4 and p2.hp == 4
+    assert p1.hp is not 5 and p2.hp is not 5
+    assert not p1.hp < 4 and not p2.hp < 4
+
+def test_less_than_10_attack():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    a = Attack(p1, p2).action(9)
+    a2 = Attack(p1, p2).action(3)
+    assert p1.hp == 5 and p2.hp == 5
+    assert not p1.hp < 5 and not p2.hp < 5
+
+
+# ------Attack xp tests------------------
+
 def test_20attack_increase_xp ():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -172,16 +223,7 @@ def test_multiple_attack_xp ():
     a2.action(16)
     assert p1.xp == 20 and p2.xp == 20
 
-
-def test_dexterity_mod():
-    p1 = Character('Josh', 'Evil')
-    p2 = Character('Dakota', 'Good')
-    assert p1.armor is 10
-
-def test_hp_mod():
-    p1 = Character('Josh', 'Evil')
-    p2 = Character('Dakota', 'Good')
-    assert p1.hp is 5
+# -----Level up tests------------------------------
 
 def test_level_up():
     p1 = Character('Josh', 'Evil')
