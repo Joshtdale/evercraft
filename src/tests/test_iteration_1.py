@@ -1,5 +1,5 @@
 from main import *
-
+#TEST FOR INITIAL CHARACTER CLASS
 def test_is_character():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -8,7 +8,27 @@ def test_is_character():
 def test_is_name():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    assert p1.name is not None
+    assert p1.name is not None and p2.name is not None
+
+def test_is_xp():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.xp == 0 and p2.xp == 0
+
+def test_is_level():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.level == 1 and p2.level == 1
+
+def test_is_alive():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.alive == True and p2.level == True
+
+def test_is_strength():
+    p1 = Character('Josh', 'Evil')
+    p2 = Character('Dakota', 'Good')
+    assert p1.level == 1 and p2.level == 1
 
 def test_name_unique():
     p1 = Character('Josh', 'Evil')
@@ -39,12 +59,13 @@ def test_hp():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.hp == 5 and p2.hp == 5
-
+#---------------------------------------------------------------------
+#REGULAR CHARACTER CLASS ATTACK TESTS
 def test_20_attack():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    p1.attack(p2, 20)
-    p2.attack(p1, 20)
+    a = Attack(p1, p2).action(20)
+    a2 = Attack(p2, p1).action(20)
     assert p2.hp == 3 and p1.hp == 3
     assert not p1.hp > 3 and not p2.hp > 3
     assert not p1.hp < 3 and not p2.hp < 3
@@ -52,8 +73,8 @@ def test_20_attack():
 def test_10_or_over_attack():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    p1.attack(p2, 15)
-    p2.attack(p1, 10)
+    a = Attack(p1, p2).action(15)
+    a2 = Attack(p2, p1).action(10)
     assert p1.hp == 4 and p2.hp == 4
     assert p1.hp is not 5 and p2.hp is not 5
     assert not p1.hp < 4 and not p2.hp < 4
@@ -61,17 +82,18 @@ def test_10_or_over_attack():
 def test_less_than_10_attack():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    p1.attack(p2, 9)
-    p2.attack(p1, 3)
+    a = Attack(p1, p2).action(9)
+    a2 = Attack(p1, p2).action(3)
     assert p1.hp == 5 and p2.hp == 5
     assert not p1.hp < 5 and not p2.hp < 5
 
 def test_alive():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    p1.attack(p2, 20)
-    p1.attack(p2, 20)
-    p1.attack(p2, 20)
+    a = Attack(p1, p2)
+    a.action(20)
+    a.action(20)
+    a.action(20)
     assert p2.alive is not True
 
 def test_strength():
@@ -117,31 +139,37 @@ def test_xp():
 def test_20attack_increase_xp ():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    p1.attack(p2, 20)
-    p2.attack(p1, 20)
+    a = Attack(p1, p2).action(20)
+    a2 = Attack(p2, p1).action(20)
     assert p1.xp == 10 and p2.xp == 10
 
 def test_regular_attack_increase_xp ():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    p1.attack(p2, 12)
-    p2.attack(p1, 14)
+    a = Attack(p1, p2)
+    a2 = Attack(p2, p1)
+    a.action(12)
+    a2.action(14)
     assert p1.xp == 10 and p2.xp == 10
 
 def test_unsuccessful_attack_xp ():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    p1.attack(p2, 8)
-    p2.attack(p1, 6)
+    a = Attack(p1, p2)
+    a2 = Attack(p2, p1)
+    a.action(8)
+    a2.action(6)
     assert p1.xp == 0 and p2.xp == 0
 
 def test_multiple_attack_xp ():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
-    p1.attack(p2, 14)
-    p2.attack(p1, 12)
-    p1.attack(p2, 15)
-    p2.attack(p1, 16)
+    a = Attack(p1, p2)
+    a2 = Attack(p2, p1)
+    a.action(14)
+    a.action(15)
+    a2.action(12)
+    a2.action(16)
     assert p1.xp == 20 and p2.xp == 20
 
 
@@ -186,3 +214,5 @@ def test_multiple_hp_level_up():
         a = Attack(p1, p2)
         a.action(20)
     assert p1.hp is 15
+
+

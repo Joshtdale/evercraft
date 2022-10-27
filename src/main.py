@@ -74,27 +74,20 @@ class Fighter(Character):
     
     def __init__(self, name, alignment):
         Character.__init__(self,name, alignment)
-        self.level = 3
-        self.attack_mod = self.strength + self.level
+        # self.level = 3
+        # self.attack_mod = self.strength + self.level
         # Attack.__init__(name, alignment, opponent)
         # hit =  self.strength + self.level
             
         
 
+class Rogue(Character):
+    pass
+class Monk(Character):
+    pass
+class Paladin(Character):
+    pass
 
-
-
-# # p1 = Character('Josh', 'Evil')
-p2 = Character('Dakota', 'Good')
-c1 = Fighter('name', 'evil')
-# for number in range(0, 201):
-#     a = Attack(c1, p2)
-#     a.action(11)
-a = Attack(c1, p2)
-a.action(7)
-
-# # # c1.attack(p2, 20)# c1.attack(p2, 20)
-print(c1.attack_mod, c1.level, p2.armor, p2.hp)
 
 
 
