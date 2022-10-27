@@ -86,10 +86,48 @@ def test_rogue_triple_damage():
     a.action(20)
     assert p2.hp is -1
 
+def test_rogue_ignore_dex():
+    p1 = Rogue('Rogue', 'Neutral')
+    p1.dexterity = p1.modifiers[14]
+    p2 = Character('Josh', 'Evil')
+    a = Attack(p1, p2)
+    a.action(20)
+    assert p2.armor == 10 and p1.dexterity == 2
+
+def test_rogue_ignore_dex():
+    p1 = Rogue('Rogue', 'Neutral')
+    p1.dexterity = p1.modifiers[16]
+    p2 = Character('Josh', 'Evil')
+    a = Attack(p1, p2)
+    a.action(10)
+    assert p2.armor is 10 and p2.hp is 4
+
 # -------Monk class tests----------------------
 
 def test_monk_class():
     assert Monk is not None
+
+def test_monk_hp_level_up():
+    p1 = Monk('Keith', 'Neutral')
+    assert p1.hp == 6 and p1.hp_mod is 6
+
+def test_monk_class_name():
+    p1 = Monk('Keith', 'Neutral')
+    assert p1.classname is 'Monk'
+
+def test_monk_damage():
+    p1 = Monk('Keith', 'Neutral')
+    p2 = Character('Dakota', 'Good')
+    a = Attack(p1, p2)
+    a.action(10)
+    assert p2.hp is 2
+    assert p2.hp is not 3
+
+def test_monk_armor():
+    p1 = Monk('Keith', 'Neutral')
+    p1.wisdom = p1.modifiers[12]
+    p1.updateAC()
+    assert p1.armor is 11
 
 # -------Paladin class tests--------------------
 
