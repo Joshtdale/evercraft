@@ -70,12 +70,21 @@ def test_fighter_hp_level_multiple():
     p2 = Character('fuck', 'thisshit')
     for number in range(0, 301):
         a = Attack(c1, p2)
-        a.action(30)
+        a.action(20)
+    assert c1.hp == 40
+
 
 # -------Rogue class tests--------------------
 
 def test_rogue_class():
     assert Rogue is not None
+
+def test_rogue_triple_damage():
+    p1 = Rogue('Keith', 'Neutral')
+    p2 = Character('some rando', 'Evil')
+    a = Attack(p1, p2)
+    a.action(20)
+    assert p2.hp is -1
 
 # -------Monk class tests----------------------
 

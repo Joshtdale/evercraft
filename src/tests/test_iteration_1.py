@@ -83,7 +83,7 @@ def test_p1_alignment_options():
 def test_p2_alignment_options():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')    
-    assert p2.alignment == 'Good' or p2.alignment == 'Evil' or p2.alignment == 'Neutral'
+    assert p2.alignment == 'Good' or p2.alignment == 'Evil' or p2.alignment == 'Neutral' and p1.alignment == 'Good' or p1.alignment == 'Evil' or p1.alignment == 'Neutral'
 
 def test_character_armor():
     p1 = Character('Josh', 'Evil')
@@ -155,6 +155,30 @@ def test_hp_mod():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.hp is 5
+
+def test_attack_mod():
+    p1 = Character('name', 'Neutral')
+    p2 = Character('fuck', 'thisshit')
+    for number in range(0, 101):
+        a = Attack(p1, p2)
+        a.action(20)
+    assert p1.level == 2 and p1.attack_mod == 1
+
+def test_attack_mod_odd():
+    p1 = Character('name', 'Neutral')
+    p2 = Character('fuck', 'thisshit')
+    for number in range(0, 201):
+        a = Attack(p1, p2)
+        a.action(20)
+    assert p1.level == 3 and p1.attack_mod == 1
+
+def test_attack_mod_odd():
+    p1 = Character('name', 'Neutral')
+    p2 = Character('fuck', 'thisshit')
+    for number in range(0, 301):
+        a = Attack(p1, p2)
+        a.action(20)
+    assert p1.level == 4 and p1.attack_mod == 2
 
 #---------REGULAR CHARACTER CLASS ATTACK TESTS------------------------------------------------------------
 
