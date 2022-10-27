@@ -159,26 +159,30 @@ def test_level_up():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     for number in range(0, 101):
-        p1.attack(p2, 20)
+        a = Attack(p1, p2)
+        a.action(20)
     assert p1.level is 2
 
 def test_multiple_level_up():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     for number in range(0, 201, 1):
-        p1.attack(p2, 20)
+        a = Attack(p1, p2)
+        a.action(20)
     assert p1.level is 3
 
 def test_hp_level_up():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     for number in range(0, 101):
-        p1.attack(p2, 20)
+        a = Attack(p1, p2)
+        a.action(20)
     assert p1.hp is 10
 
 def test_multiple_hp_level_up():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     for number in range(0, 201):
-        p1.attack(p2, 20)
+        a = Attack(p1, p2)
+        a.action(20)
     assert p1.hp is 15
