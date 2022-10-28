@@ -54,11 +54,17 @@ class Character():
 
 class Attack:
     def __init__(self, attacker, opponent):
-        if attacker.classname == "Rogue":
-            opponent.armor = opponent.armor - opponent.dexterity
-            
         self.attacker = attacker
         self.opponent = opponent
+        if attacker.classname == "Rogue":
+            opponent.armor = opponent.armor - opponent.dexterity 
+        if attacker.classname == 'Paladin' and opponent.alignment == 'Evil':
+            attacker.crit_mod = 3
+            attacker.attack_mod += attacker.strength + 2
+            attacker.damage = 3 
+        if attacker.classname == 'Monk':
+            attacker.attack_mod = attacker.strength + attacker.level // 2 + attacker.level // 3
+        
     def action(self, roll):
         hit = self.attacker.attack_mod
         print('that boy hit', hit)
@@ -87,8 +93,12 @@ class Attack:
         
 
 class Fighter(Character):
-    
     def __init__(self, name, alignment):
+        align = {
+            'Good': 'Good',
+            'Neutral': 'Neutral',
+            'Evil': 'Evil'
+            }
         Character.__init__(self,name, alignment)
         self.attack_mod = self.strength + self.level
         self.hp_mod = 10
@@ -98,11 +108,10 @@ class Fighter(Character):
         
 
 class Rogue(Character):
-    
     def __init__(self, name, alignment):
         align = {
             'Neutral': 'Neutral',
-            'Evil': 'Evil'
+            'Evil': 'Evil',
             }
         Character.__init__(self, name, alignment)
         self.classname = 'Rogue'
@@ -117,20 +126,33 @@ class Monk(Character):
         align = {
             'Good': 'Good',
             'Neutral': 'Neutral',
-            'Evil': 'Evil'
+            'Evil': 'Evil',
             }
         Character.__init__(self, name, alignment)
         self.classname = 'Monk'
+        self.alignment = align[alignment]
         self.hp_mod = 6
         self.hp = 6
         self.damage = 3
         self.armor = self.armor + (self.dexterity + self.wisdom)
+        self.attack_mod = self.strength + self.level // 2 + self.level // 3
     
     def updateAC(self):
         self.armor = self.armor + (self.dexterity + self.wisdom)
+        self.attack_mod = self.strength + self.level // 2 + self.level // 3
 
 class Paladin(Character):
-    pass
+    def __init__(self, name, alignment):
+        align = {
+            'Good': 'Good',
+            }
+        Character.__init__(self, name, alignment)
+        self.classname = 'Paladin'
+        self.alignment = align[alignment]
+        self.attack_mod = self.strength + self.level
+        self.hp_mod = 8
+        self.hp = 8
+
 
 
 # p1 = Character('name', 'Neutral')
@@ -142,9 +164,13 @@ class Paladin(Character):
 # # print (p1.level, p1.attack_mod, p2.hp)
 # # print(c1.level, c1.hp)
 # print(p2.armor)
-p1 = Monk('Keith', 'Neutral')
-p1.wisdom = p1.modifiers[12]
-print(p1.wisdom, p1.armor)
+p1 = Monk('josh', 'Good')
+p1.level = 8
+# p2 = Character('Dakota', 'Good')
+# a = Attack(p1, p2).action(20)
+print(p1.attack_mod)
+# p1.wisdom = p1.modifiers[12]
+# print(p1.wisdom, p1.armor)
 
 
 
