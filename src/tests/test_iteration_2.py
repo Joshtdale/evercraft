@@ -34,6 +34,7 @@ def test_fighter_armor():
     c2 = Fighter('Dakota', 'Good')
     assert c1.armor == 10 and c2.armor==10
 
+# Constitution mod should equal 0 because of modifiers[10](main.py -)
 def test_fighter_constitution():
     c1 = Fighter('Josh', 'Evil')
     c2 = Fighter('Dakota', 'Good')

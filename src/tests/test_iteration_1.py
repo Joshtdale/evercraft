@@ -199,6 +199,7 @@ def test_attack_mod_odd():
 
 #---------REGULAR CHARACTER CLASS ATTACK TESTS------------------------------------------------------------
 
+#Testing if character takes damage on crit
 def test_20_attack():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
