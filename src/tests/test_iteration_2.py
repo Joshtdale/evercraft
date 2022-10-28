@@ -82,6 +82,10 @@ def test_fighter_hp_level_multiple():
 def test_rogue_class():
     assert Rogue is not None
 
+def test_rogue_alignment2():
+    with pytest.raises(KeyError):
+        p1 = Rogue('josh', 'Good')
+
 def test_rogue_triple_damage():
     p1 = Rogue('Keith', 'Neutral')
     p2 = Character('some rando', 'Evil')
