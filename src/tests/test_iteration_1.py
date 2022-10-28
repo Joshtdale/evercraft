@@ -19,46 +19,55 @@ def test_is_xp():
     p2 = Character('Dakota', 'Good')    
     assert p1.xp == 0 and p2.xp == 0
 
+#Testing if there is a level attribute
 def test_is_level():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')    
     assert p1.level == 1 and p2.level == 1
 
+#Testing if there is an alive attribute set to true
 def test_is_alive():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.alive == True and p2.level == True
 
+#Testing if there is a strength attribute
 def test_is_strength():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.strength == 0 and p2.strength == 0
 
+#Testing if there is a dexterity attribute
 def test_is_dexterity():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.dexterity == 0 and p2.dexterity== 0
 
+#Testing if there is an armor attribute
 def test_is_armor():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.armor == 10 and p2.armor==10
 
+#Testing if there is a constitution attribute
 def test_is_constitution():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.constitution == 0 and p2.constitution == 0
 
+#Testing if there is a wisdom attribute
 def test_is_wisdom():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.wisdom == 0 and p2.wisdom == 0
 
+#Testing if there is an intelligence attribute
 def test_is_intelligence():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
     assert p1.intelligence == 0 and p2.intelligence == 0
 
+#Testing if there is a charisma attribute
 def test_is_charisma():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
