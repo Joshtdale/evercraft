@@ -170,6 +170,7 @@ def test_hp_mod():
     p2 = Character('Dakota', 'Good')
     assert p1.hp is 5
 
+#Testing if attack mod increases at level 2
 def test_attack_mod():
     p1 = Character('name', 'Neutral')
     p2 = Character('fuck', 'thisshit')
@@ -178,6 +179,7 @@ def test_attack_mod():
         a.action(20)
     assert p1.level == 2 and p1.attack_mod == 1
 
+#Testing if attack mod doesnt increase on level 3
 def test_attack_mod_odd():
     p1 = Character('name', 'Neutral')
     p2 = Character('fuck', 'thisshit')
@@ -186,6 +188,7 @@ def test_attack_mod_odd():
         a.action(20)
     assert p1.level == 3 and p1.attack_mod == 1
 
+#Testing if character attack mod increases on even level
 def test_attack_mod_odd():
     p1 = Character('name', 'Neutral')
     p2 = Character('fuck', 'thisshit')
@@ -205,6 +208,7 @@ def test_20_attack():
     assert not p1.hp > 3 and not p2.hp > 3
     assert not p1.hp < 3 and not p2.hp < 3
 
+#Checking if character does damage on successful attacks
 def test_10_or_over_attack():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -214,6 +218,7 @@ def test_10_or_over_attack():
     assert p1.hp is not 5 and p2.hp is not 5
     assert not p1.hp < 4 and not p2.hp < 4
 
+#Making sure character does not do damage on unsuccessful attacks
 def test_less_than_10_attack():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -225,6 +230,7 @@ def test_less_than_10_attack():
 
 # ------Attack xp tests------------------
 
+#Testing for xp increases on successful attacks
 def test_20attack_increase_xp ():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -232,6 +238,7 @@ def test_20attack_increase_xp ():
     a2 = Attack(p2, p1).action(20)
     assert p1.xp == 10 and p2.xp == 10
 
+#Testing for xp increases on successful attacks
 def test_regular_attack_increase_xp ():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -241,6 +248,7 @@ def test_regular_attack_increase_xp ():
     a2.action(14)
     assert p1.xp == 10 and p2.xp == 10
 
+#Making sure xp doesn't increase on unsuccessful attacks
 def test_unsuccessful_attack_xp ():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -250,6 +258,7 @@ def test_unsuccessful_attack_xp ():
     a2.action(6)
     assert p1.xp == 0 and p2.xp == 0
 
+#Testing if xp levels up on multiple successful attacks
 def test_multiple_attack_xp ():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -263,6 +272,7 @@ def test_multiple_attack_xp ():
 
 # -----Level up tests------------------------------
 
+#Checking if character levels up after xp is reached
 def test_level_up():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -271,6 +281,7 @@ def test_level_up():
         a.action(20)
     assert p1.level is 2
 
+#Checking if character levels up multiple times after xp is reached
 def test_multiple_level_up():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -279,6 +290,7 @@ def test_multiple_level_up():
         a.action(20)
     assert p1.level is 3
 
+#Testing if hp is leveling up
 def test_hp_level_up():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
@@ -287,6 +299,7 @@ def test_hp_level_up():
         a.action(20)
     assert p1.hp is 10
 
+#Testing if hp is leveling up multiple times
 def test_multiple_hp_level_up():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')

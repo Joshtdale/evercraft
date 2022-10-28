@@ -16,16 +16,19 @@ def test_fighter_alive():
     c2 = Fighter('Dakota', 'Good')
     assert c1.alive == True and c2.level == True # character on creation default is alive
 
+#  Strength mod should equal 0 because of modifiers[10] (main.py - ln 14)
 def test_fighter_strength():
     c1 = Fighter('Josh', 'Evil')
     c2 = Fighter('Dakota', 'Good')
     assert c1.strength == 0 and c2.strength == 0
 
+#  Dexterity mod should equal 0 because of modifiers[10] (main.py - ln 14)
 def test_fighter_dexterity():
     c1 = Fighter('Josh', 'Evil')
     c2 = Fighter('Dakota', 'Good')
     assert c1.dexterity == 0 and c2.dexterity== 0
 
+#  Armor mod should equal 10 because of modifiers[10] + 10 (main.py - ln 47)
 def test_fighter_armor():
     c1 = Fighter('Josh', 'Evil')
     c2 = Fighter('Dakota', 'Good')
