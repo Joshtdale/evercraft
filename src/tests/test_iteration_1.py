@@ -108,6 +108,7 @@ def test_hp():
     p2 = Character('Dakota', 'Good')
     assert p1.hp == 5 and p2.hp == 5
 
+#Test if character alive boolean changes to false when hp < 0
 def test_alive():
     p1 = Character('Josh', 'Evil')
     p2 = Character('Dakota', 'Good')
