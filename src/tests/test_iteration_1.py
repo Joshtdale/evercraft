@@ -1,23 +1,27 @@
 from main import *
 #TEST FOR INITIAL CHARACTER CLASS
-def test_is_character():
-    p1 = Character('Josh', 'Evil')
+
+#Testing if there is a Character Class
+def test_is_character():   
+    p1 = Character('Josh', 'Evil')     
     p2 = Character('Dakota', 'Good')
     assert Character is not None
 
+#Testing if there is a name attribute in character class
 def test_is_name():
     p1 = Character('Josh', 'Evil')
-    p2 = Character('Dakota', 'Good')
+    p2 = Character('Dakota', 'Good')    
     assert p1.name is not None and p2.name is not None
 
+#Testing if there is an xp attribute
 def test_is_xp():
     p1 = Character('Josh', 'Evil')
-    p2 = Character('Dakota', 'Good')
+    p2 = Character('Dakota', 'Good')    
     assert p1.xp == 0 and p2.xp == 0
 
 def test_is_level():
     p1 = Character('Josh', 'Evil')
-    p2 = Character('Dakota', 'Good')
+    p2 = Character('Dakota', 'Good')    
     assert p1.level == 1 and p2.level == 1
 
 def test_is_alive():
